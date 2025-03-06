@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<a href="{% url 'books' %}" >Orqaga qaytish</a>
+
+<p>Nomi: {{ book.title }}</p>
+<p>Muallif: {{ book.author }}</p>
+<p>Narxi: {{ book.price }}</p>
+<p>Til: {{ book.language }}</p>
+<p>Muqovasi: {{ book.get_cover_display }}</p>
+<p>Chiqarilgan yil: {{ book.publish }}</p>
+<p>saytga yuklangan: {{ book.publish_time }}</p>
+<p>Yangilangan vaqti: {{ book.Updated_time }}</p>
+<p>ISBN: {{ book.isbn }}</p>
+<p>Reting: {{ book.rating }}</p>
+
+<a href="{% url 'update' book.id %}">Malumotlarni yangilash</a>
+<a href="{% url 'delete' book.id %}">Kitobni olib tashlash</a>
+
+</body>
+</html>

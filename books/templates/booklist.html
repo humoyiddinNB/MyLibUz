@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All books</title>
+</head>
+<body>
+
+<header>
+    <a href="{% url 'create' %}" >Kitob qo'shish</a>
+    <a href="{% url 'home' %}" >  Bosh sahifa</a>
+</header>
+
+{% for book in books %}
+<a href="{% url 'detail' book.id %}" >
+    <div>
+        <p><strong>{{ book.title }}</strong></p>
+        <p><strong> by {{ book.author }}</strong></p>
+        <p><strong>{{ book.prise }} soum</strong></p>
+    </div>
+</a>
+{% endfor %}
+
+</body>
+</html>
