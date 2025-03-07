@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+
+<form method="GET" action="{% url 'search' %}">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search">
+    <button type="submit">Qidirish</button>
+
+</form>
+
+{% for book in books %}
+{% if book %}
+    <h2>{{ book.title }}</h2>
+    <p>{{ book.author }}</p>
+    <p>{{ book.isbn }}</p>
+{% else %}
+    <p>Hech qanday kitob topilmadi.</p>
+{% endif %}
+{% endfor %}
+</body>
+</html>

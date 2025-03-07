@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
+from django.db.models import Q
 
 from .models import Book
 from .forms import BookForm
@@ -58,4 +59,12 @@ class DeleteView(View):
         return redirect('books')
 
 
+class BookSearchView(View):
+    def get(self, request):
+        query = request.GET.get('q', '')
+        books = Book.objects.filter(
+            Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query)
+        ) if query else Book.objects.all()
+
+        return render(request, 'search.html', {'books': books, 'query': query})
 
